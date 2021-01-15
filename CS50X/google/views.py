@@ -5,8 +5,12 @@ from django.views import View
 class HomePage(View):
 
     def get(self, request, *args, **kargs):
+<<<<<<< HEAD
 
         print("Request type -- ", self.request.GET)
+=======
+        print("Request type", request)
+>>>>>>> 7375773 (Google Search Pages.)
         return render(request, 'google/homePage.html')
 
 
@@ -18,6 +22,7 @@ class ImageSearch(View):
 class AdvanceSearch(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'google/advancePage.html')
+<<<<<<< HEAD
 
 class PianoTiles(View):
     def get(self, request):
@@ -29,3 +34,5 @@ class FlashCard(View):
         return render(request, 'google/flashcard.html')
 
         
+=======
+>>>>>>> 7375773 (Google Search Pages.)

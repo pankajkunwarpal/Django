@@ -2,10 +2,16 @@
 {% block content %}
     <a href="{% url 'ImageSearch' %}">Image Search</a><br>
     <a href="{% url 'AdvanceSearch' %}">Advance Search</a><br>
+<<<<<<< HEAD
     <form method="get" action="https://google.com/search">
         <input type="text" name="q"><br>
         <input type="submit" value="Google Search" id="submit">
         <input type="submit" value="I'm Feeling Lucky" id="submit">
+=======
+    <form method="GET" action="https://google.com/search">
+        <input type="text" name="q"><br>
+        <input type="submit" value="Google Search" id="submit">
+>>>>>>> 7375773 (Google Search Pages.)
     </form>
 
 {% endblock %}
