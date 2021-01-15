@@ -1,0 +1,10 @@
+{% extends 'google/base.html' %}
+{% block content %}
+    <a href="{% url 'ImageSearch' %}">Image Search</a><br>
+    <a href="{% url 'AdvanceSearch' %}">Advance Search</a><br>
+    <form method="GET" action="https://google.com/search">
+        <input type="text" name="q"><br>
+        <input type="submit" value="Google Search" id="submit">
+    </form>
+
+{% endblock %}
