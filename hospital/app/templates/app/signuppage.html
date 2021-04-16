@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Singup {{ block.super }}{% endblock %}
+
+
+{% block content %}
+<div class=".container m-4">
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><lable class="form-label ms-4 fw-bold">First Name: </lable></td>
+                <td><input type="text" name="fname" class="form-control m-1 ms-4" placeholder="First name"></td>
+            </tr>
+            <tr>
+                <td><lable class="form-label ms-4 fw-bold">Last Name: </lable></td>
+                <td><input type="text" name="lname" class="form-control m-1 ms-4" placeholder="Last name"></td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <label for="username" class="form-label ms-4 fw-bold" >Username: </label></td>
+                <td><input type="text" name="usn" class="form-control m-1 ms-4" placeholder="Username" autofocus ></td>
+            </tr>
+            <tr><td class="ps-5">
+                    <li>Only Characters.</li>
+                    <li><strong>_</strong> only allowed.</li>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <label for="password1" class="form-label ms-4 fw-bold">Password: </label></td>
+                <td><input type="password" name="psd1" class="form-control ms-3" placeholder="Password" required></td>
+            </tr>
+            <tr><td class="ps-5">
+                    <li>Minimum 8 Characters.</li>
+                    <li>One Character, One Number and One special symbol.</li>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" >
+                    <label for="password2" class="form-label ms-4 fw-bold">Confirm Password: </label></td>
+                <td><input type="password" name="psd2" class="form-control ms-3" placeholder="Enter password again" required></td>
+            </tr>
+            <tr>
+                <td class="ps-5"><li>Enter the Same password as entered above.</li></td>
+            </tr>
+        </table>
+        <input type="submit" value="signup" class="btn btn-primary btn-lg m-2">
+        <a href="{% url 'home' %}" class="btn btn-secondry m-2 bg-secondary text-white">Home Page &xlarr;</a>
+    </form>
+    
+</div>
+{% endblock %}
