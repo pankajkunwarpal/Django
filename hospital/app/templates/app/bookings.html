@@ -5,11 +5,13 @@
 <div class="ps-3">
     {% if staff %}
     <h1 class="lead fs-3 fw-bold">Appointments available.</h1>
+
     {% else %}
     <h1 class="lead fs-3 fw-bold">{{ user }} appointments available.</h1>
     {% endif %}
     
     <div class="accordion container" id="accordionExample">
+    {% if bookings %}
         {% for b in bookings %}
             <div class="accordion-item">
                 <h2 class="accordion-header" id="heading{{ forloop.counter }}">
@@ -27,6 +29,10 @@
             </div>
         {% endfor %}
     </div>
+    {% else %} No bookings
+    {% endif %}
+
     <p>Logout <a href="{% url 'logout' %}" class="btn btn-secondary text-white">&xlarr;</a></p>
+
 </div>
 {% endblock %}

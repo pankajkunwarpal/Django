@@ -16,7 +16,7 @@ format = '%A %d %B %Y %H:%M'
 class BookedAppoints(View):
 
     def get(self, request):
-        print(request.user.first_name, request.user.last_name)
+        # print(request.user.first_name, request.user.last_name)
         if request.user.is_staff:
             bookings = []
             date = request.GET.get('date') if request.GET.get('date') else datetime.today().date().day
@@ -27,7 +27,7 @@ class BookedAppoints(View):
                 'book_by': _.booked_by
                 })
             for _ in Directory.objects.filter(date__day=date)]
-            print("staff",request.POST, *bookings, sep='\n')       
+            # print("staff",request.POST, *bookings, sep='\n')       
             return render(request, 'app/Bookings.html', {'bookings': bookings, 'staff': True})
 
         else:
@@ -39,7 +39,7 @@ class BookedAppoints(View):
                 'book_by': _.booked_by
                 }) for _ in Directory.objects.filter(booked_by=f'{request.user.first_name} {request.user.last_name}') ]
             
-            print("user---", request.POST, *bookings, sep='\n')       
+            # print("user---", request.POST, *bookings, sep='\n')       
             return render(request, 'app/Bookings.html', {'bookings': bookings, 'user': f'{request.user.first_name} {request.user.last_name}'})
 
 
@@ -82,8 +82,8 @@ class MakingAppoints(View):
             bookings.append(data)
 
         ctx = {'bookings': bookings, 'user': f'{request.user.first_name} {request.user.last_name}'}
-        print("Making appoints", request.user.username, *bookings, sep='\n')
-        print('bookedappoints', *bookedAppoints, sep='\n')
+        # print("Making appoints", request.user.username, *bookings, sep='\n')
+        # print('bookedappoints', *bookedAppoints, sep='\n')
         return render(request, 'app/makebookings.html', context=ctx)
 
 

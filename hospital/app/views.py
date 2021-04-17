@@ -60,7 +60,7 @@ class Singup(View):
             print("User {} created succesfully.".format(usn))
 
         else:
-            print("User creation Unsuccesfull.")
+            # print("User creation Unsuccesfull.")
             return render(request, 'app/signuppage.html')
 
         return render(request, 'app/loginpage.html')
