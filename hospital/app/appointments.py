@@ -9,17 +9,34 @@ from django.template import loader
 import json
 
 
-bookedAppoints = [ _.date.time() for _ in Directory.objects.filter(date__date=datetime.now().date())]
 format = '%A %d %B %Y %H:%M'
+
+def get_appoints(self):
+        return self.bookedAppoints
+
+class Appointments:
+    def __init__(this):
+        this.bookedAppoints=[]
+        this.__update()
+
+    def set_appoints(self):
+        self.bookedAppoints=[ _.date.time() for _ in Directory.objects.filter(date__date=datetime.now().date())]
+
+    __update =set_appoints
+    
+    get = get_appoints
+
 
 
 class BookedAppoints(View):
 
     def get(self, request):
         print(request.user.first_name, request.user.last_name)
+        
         if request.user.is_staff:
             bookings = []
             date = request.GET.get('date') if request.GET.get('date') else datetime.today().date().day
+            
             [bookings.append({
                 'name': _.name,
                 'age': _.age,
@@ -27,11 +44,13 @@ class BookedAppoints(View):
                 'book_by': _.booked_by
                 })
             for _ in Directory.objects.filter(date__day=date)]
-            print("staff",request.POST, *bookings, sep='\n')       
+            
+            # print("staff",request.POST, *bookings, sep='\n')       
             return render(request, 'app/Bookings.html', {'bookings': bookings, 'staff': True})
 
         else:
             bookings = []
+            
             [bookings.append({
                 'name': _.name,
                 'age': _.age,
@@ -39,7 +58,7 @@ class BookedAppoints(View):
                 'book_by': _.booked_by
                 }) for _ in Directory.objects.filter(booked_by=f'{request.user.first_name} {request.user.last_name}') ]
             
-            print("user---", request.POST, *bookings, sep='\n')       
+            # print("user---", request.POST, *bookings, sep='\n')       
             return render(request, 'app/Bookings.html', {'bookings': bookings, 'user': f'{request.user.first_name} {request.user.last_name}'})
 
 
@@ -52,6 +71,8 @@ class MakingAppoints(View):
     def get(self, request):
         bookings=[]
         
+        appoints = Appointments().get()
+
         delta = timedelta(minutes=30)
         now  = datetime.now().replace(microsecond=0, second=0)
         till = datetime(day=now.day+1, month=now.month, year=now.year)
@@ -67,23 +88,23 @@ class MakingAppoints(View):
                 # print('less then 10')
                 now+=delta
                 continue
-            elif now.hour == 12 or 15 <= now.hour <= 17:
+            elif now.hour == 12 or 15 <= now.hour < 17:
                 # print('12')
                 now+=delta
                 continue
             else:
 
                 data={"date": now.strftime(format),
-                "available": False if now.time() in bookedAppoints else True,
+                "available": False if now.time() in appoints else True,
                 }
                 now+=delta
 
-            # print(" ", now.strftime(format))
+            print("date ", now.strftime(format), 'Time', now.time().__str__())
             bookings.append(data)
 
         ctx = {'bookings': bookings, 'user': f'{request.user.first_name} {request.user.last_name}'}
-        print("Making appoints", request.user.username, *bookings, sep='\n')
-        print('bookedappoints', *bookedAppoints, sep='\n')
+        # print("Making appoints", request.user.username, *bookings, sep='\n')
+        # print('bookedappoints', *appoints, sep='\n')
         return render(request, 'app/makebookings.html', context=ctx)
 
 
@@ -91,7 +112,7 @@ class MakingAppoints(View):
 class MakingBookings(View):
     def post(self, request):
 
-        global bookedAppoints
+        bookedAppoints = Appointments().get()
         user = request.user
         date = datetime.strptime(request.POST.get('date'), format)
         now = datetime.now()
@@ -106,7 +127,7 @@ class MakingBookings(View):
         elif user.is_authenticated:
 
             Directory.objects.create(name=request.POST.get('name'),
-            age=request.POST.get('age'), date=date, booked_by=f'{user.first_name} {user.last_name}').save()
+            age=request.POST.get('age'), date=date.__str__(), booked_by=f'{user.first_name} {user.last_name}').save()
             return HttpResponse('Succesfully created.  Click to see appointments<a href="\\appointments">&xlarr;</a>')
 
         else:
