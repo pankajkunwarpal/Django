@@ -9,7 +9,10 @@ from django.template import loader
 import json
 
 
+
 format = '%A %d %B %Y %H:%M'
+
+#booking made class.
 
 def get_appoints(self):
         return self.bookedAppoints
