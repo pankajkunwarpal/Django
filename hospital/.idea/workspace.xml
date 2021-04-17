@@ -15,11 +15,20 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:hospital" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f924d0c6-3f01-4150-802c-31f0bd0188f1" name="Default Changelist" comment="fixup! hospital first commit" />
+    <list default="true" id="f924d0c6-3f01-4150-802c-31f0bd0188f1" name="Default Changelist" comment="fixup! hospital first commit">
+      <change afterPath="$PROJECT_DIR$/.idea/hospital.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +43,7 @@
     <branch-grouping />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="master" />
+        <entry key="$PROJECT_DIR$/.." value="a9b1003366ac18b0341e2bfe6c4888c96ba01a63" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -150,6 +159,17 @@
                   <entry key="Show.Git.Branches" value="true" />
                 </map>
               </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="hospital" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
             </State>
           </value>
         </entry>
@@ -175,10 +195,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1618641470375" />
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1618641553064">
+    <state width="388" height="442" key="Diff.GoToChangePopup" timestamp="1618642017274">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1618641553064" />
+    <state width="388" height="442" key="Diff.GoToChangePopup/0.0.1366.728@0.0.1366.728" timestamp="1618642017274" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1618642252747">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1618642252747" />
     <state x="175" y="47" key="Git.Interactive.Rebase.Dialog" timestamp="1618641370469">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -191,9 +215,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1618640388804" />
-    <state x="391" y="97" key="VcsDiffUtil.ChangesDialog" timestamp="1618640660375">
+    <state x="553" y="30" key="VcsDiffUtil.ChangesDialog" timestamp="1618642102001">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="391" y="97" key="VcsDiffUtil.ChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1618640660375" />
+    <state x="553" y="30" key="VcsDiffUtil.ChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1618642102001" />
   </component>
 </project>
