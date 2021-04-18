@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="{% static 'vacancy/base.css' %}">
+    <style>
+        html {
+	background: #17a2b8;
+}
+
+body {
+	margin: 2% 20%;
+	padding: 3%;
+	background: #ffffff;
+	line-height: 1.5;
+    font-family: Ubuntu, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    font-size: 4.2rem;
+    line-height: 1.3;
+    font-weight: 400;
+    color: grey;
+    height: 90px;
+}
+
+form {
+	text-align: center;
+	margin-bottom: 5%;
+}
+
+input {
+	border-radius: 50px;
+	margin-left: 10px;
+}
+
+a {
+	color: green;
+}
+
+a:hover {
+    color: red;
+}
+
+    </style>
+</head>
+<body>
+
+<h2>Welcome to HyperJob!</h2>
+<div><a href="/login">Login page</a></div>
+<div><a href="/signup">Sign up page</a></div>
+<div><a href="/vacancies">Vacancy list</a></div>
+<div><a href="/resumes">Resume list</a></div>
+<div><a href="/home">Personal profile</a></div>
+
+</body>
+</html>
