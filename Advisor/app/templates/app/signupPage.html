@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Signup Page{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form method="POST" action="{% if admin %}{% url 'registerPage' %}{% else %} {% url 'signupPage' %}{% endif %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            {{ staff }}
+            </br>
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}
