@@ -1,8 +1,0 @@
-{% extends 'vacancy/base.html' %}
-{% block body %}
-<form method="POST">{% csrf_token %}
-    <h2>Enter new vacany</h2>
-    <input type="text" placeholder="Enter vacancy" name='description'>
-    <input type="submit" value='POST'>
-</form>
-{% endblock %}
