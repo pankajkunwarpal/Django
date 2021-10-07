@@ -1,0 +1,10 @@
+Django
+gunicorn
+django-heroku
+whitenoise
+dj-database-url
+djangorestframework
+djangorestframework-simplejwt
+pytz
+django-crispy-forms
+django-cors-headers

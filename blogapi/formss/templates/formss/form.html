@@ -1,0 +1,12 @@
+{% extends 'formss/layout.html' %} 
+{% load crispy_forms_tags %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="form-card p-2 rounded">
+    {% crispy form %}
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Home page</title>
+        <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'home.css' %}" rel="stylesheet">
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+        </head>
+    <body>
+        <div class="d-flex flex-column text-white h-100vh justify-content-between text-center mx-5 p-3">
+            <header>
+                <div id="header" class="d-flex text-center justify-content-between flex-wrap fixed">
+                    <h1>Home Page</h1>
+                        <nav>
+                            <a href="{% url 'home' %}" class="px-2 pb-1">Home</a>
+                            <a href="{% url 'login' %}" class="px-2 pb-1">Login</a>
+                            <a href="{% url 'signup' %}" class="px-2 pb-1">Signup</a>
+                        </nav>
+                </div>
+            </header>
+            
+            <main>
+                <h1>Write what's on your mind.</h1>
+            </main>
+            
+            <footer >
+                <p class="text-white">Created using<span class="text-secondary">Django</span>templates.</p>
+            </footer>
+        </div>
+
+    </body>
+</html>

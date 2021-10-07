@@ -1,0 +1,22 @@
+{% extends 'formss/layout.html' %} 
+
+{% block title %} {{ title }} {% endblock %} 
+
+{% block content %}
+        <ol class="bold">
+
+        {% for blog in blogs %}
+            
+            <div class="blog m-3 ps-3 my-2 rounded" style="box-shadow: 0px 0px 10px -2px #444444;">
+                <li class="ms-2 ps-2">
+                    <h3>{{ blog.title }}</h3>
+                    <ul><li><p>{{ blog.blog }}</p></li></ul>    
+                </li>
+            </div>
+        {% empty %} 
+            <div class="blog ms-3 ps-3 my-2 rounded" style="box-shadow: 0px 0px 10px -2px #444444;">
+                <p class="fs-2 bolder">No post's are available.</p>
+            </div>    
+        {% endfor %}
+        </ol>
+{% endblock %}

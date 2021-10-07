@@ -1,0 +1,55 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link href='{% static "bootstrap\css\bootstrap.min.css" %}' rel="stylesheet">
+        <static src='{% static "bootstrap\js\bootstrap.min.js" %}'></static>
+        <link href="{% static 'home.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="d-flex flex-column text-white h-100vh justify-content-between text-center mx-5 p-3">
+            
+            <header>
+                <div id="header" class="d-flex text-center justify-content-between flex-wrap">
+                    <h1>Home Page</h1>
+                    {% if request.user.is_authenticated %} 
+                    <h3>Welcome {{ user.username.capitalize }}</h3>
+                    {% endif %}
+                        <nav>
+                            {% if 'signup' in request.path %}
+
+                            <a href="{% url 'login' %}" class="px-2 pb-1 ">Login</a>
+                            {% elif 'login' in request.path %}
+                            <a href="{% url 'signup' %}" class="px-2 pb-1 ">Signup</a>
+                            {% else %}
+                            <a href="{% url 'logout' %}" class="px-2 pb-1 ">Logout</a>
+                            {% endif %}
+                        </nav>
+                </div>
+            </header>
+            <main>
+                <div class="my-3 d-flex justify-content-between rounded main flex-wrap">
+                    <div class=" main-nav rounded p-3">
+                        <nav class="d-flex flex-column align-items-start rounded p-2">
+
+                            <a href="{% url 'blog' %}">Write Blog</a>
+                            <a href="{% url 'blogs' %}">Blogs</a>
+                            
+                        </nav>
+                    </div>
+
+                    <div class="form-container rounded p-2">
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+
+            </main>
+            <footer >
+                <p class="text-white">Created using <span class="text-secondary">Django</span> templates.</p>
+            </footer>
+        </div>
+    </body>
+</html>

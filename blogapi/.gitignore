@@ -1,0 +1,8 @@
+staticfiles
+__pychache__
+Procfile.windows
+*.pyc
+*.sqlite3
+node_modules
+*.json
+react-blog
