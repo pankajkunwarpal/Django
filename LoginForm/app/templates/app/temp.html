@@ -1,0 +1,40 @@
+<button type="button" class="btn btn-outline-secondary me-1" data-bs-toggle="modal{{ user.user.username }}"
+                        data-bs-target="#{{ user.user.username }}">Edit</button>
+
+                <div class="modal fade" id="{{ user.user.username }}" tabindex="-1"
+                      aria-labelledby="example{{ user.user.username }}" aria-hidden="false">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="example{{ user.user.username }}">New message</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal{{ user.user.username }}" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form method="post" action="/home">
+                            {% csrf_token %}
+                          <div class="mb-3">
+                            <label for="firstname" class="col-form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname">
+                          </div>
+                          <div class="mb-3">
+                            <label for="lastname" class="col-form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Save changes</button>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <form action="/home" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="id" value="{{ user.id }}">
+                  <input type="submit" class="btn btn-outline-danger" value="Delete" name="delete">
+                </form>
+                
+              </div>
+            </div>
+          </div>

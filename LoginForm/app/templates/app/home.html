@@ -1,0 +1,124 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Home page{% endblock %}
+
+{% block content %}
+    <div class='container border border-secondary rounded p-3' style="width: 500px; height: 500px">
+      <div class="row">
+        <div class="col px-6">
+          <div class='bg-secondary p-2 rounded text-white'>
+            User Details
+          </div>
+        </div>
+        <div class="col">
+          <div class="btn btn-outline-success rounded p-2">
+            <a href="/logout" style="text-decoration: none;">Logout</a>
+          </div>
+        </div>  
+      </div>
+      
+      
+      <div class='my-4 pe-1' style='min-height: 50px; max-height: 380px; overflow: auto;'>
+
+        {% for user in users %}
+
+          <div class="toast show align-items-center border border-info mb-1" role="alert" aria-live="assertive"
+                aria-atomic="true" style="width: 100%; box-shadow: none;">
+            <div class="d-flex">
+              <div class="toast-body me-auto">
+                {{ user.user.id }}. {{ user.user.username }} | {{ user.address }}
+              </div>
+              <div class="toast-header p-1">
+                <!-- Modal button -->
+
+                <button type="button" class="btn btn-outline-secondary me-1" data-bs-toggle="modal" 
+                data-bs-target="#exampleModal" data-bs-id="{{ user.id }}"
+                data-bs-email="{{ user.user.email }}" data-bs-address="{{ user.address }}">Edit</button>
+                
+                <!-- Delete Component -->
+                
+                <form action="/home" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="id" value="{{ user.id }}">
+                  <input type="submit" class="btn btn-outline-danger" value="Delete" name="delete">
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- If Empty user -->
+          {% empty %}
+
+          <div class="toast show align-items-center text-white bg-primary border-0" role="alert"
+                aria-live="assertive" aria-atomic="true" style="width: 100%; box-shadow: none;">
+            <div class="d-flex">
+              <div class="toast-body">
+                All user are removed.
+              </div>
+            </div>
+          </div>
+
+        {% endfor %}
+        
+      </div>
+    </div>    
+
+    <!-- Modal -->
+
+    <div class="modal fade text-start" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit User details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="/home">
+              {% csrf_token %}
+              <input type="hidden" name="userid" id="userid" value="">
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" name="email">
+              </div>
+              <div class="mb-3">
+                <label for="address" class="col-form-label">Address:</label>
+                <input type="text" class="form-control" id="address" name="address">
+              </div>
+              <input type="submit" class="btn btn-primary" name="edit" value="Save Changes">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script for modal -->
+
+    <script>
+      let exampleModal = document.getElementById('exampleModal');
+
+      exampleModal.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        let button = event.relatedTarget
+        // Extract info from data-bs-* attributes
+        let email = button.getAttribute('data-bs-email')
+        let address = button.getAttribute('data-bs-address')
+        let id = button.getAttribute('data-bs-id')
+        // If necessary, you could initiate an AJAX request here
+        // and then do the updating in a callback.
+        //
+        // Update the modal's content.
+        let modalEmail = exampleModal.querySelector('#email')
+        let modalAddress = exampleModal.querySelector('#address')
+        let modalId = exampleModal.querySelector('#userid')
+
+        modalEmail.placeholder = email
+        modalAddress.placeholder = address
+        modalId.value = id
+      })
+
+    </script>
+
+{% endblock %}

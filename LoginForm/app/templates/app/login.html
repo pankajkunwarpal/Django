@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+    Login Page
+{% endblock %}
+
+{% block content %}
+{% if error %}
+<div class="fs-4 py-3 px-2 mb-3 bg-danger text-white text-center rounded">{{ error }}</div>
+{% endif %}
+
+    <form method="post" action="/login">
+      <div class="fs-4 py-3 px-2 mb-3 bg-secondary text-white text-center rounded">Enter details to login</div>
+        {% csrf_token %}
+        <div class="row pb-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Username" aria-label="User Name" name="username">
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col">
+            <input type="password" class="form-control" placeholder="Password" aria-label="Email" name="pswd">
+          </div>
+        </div>
+        
+        <input type="submit" class="mb-3 form-control btn btn-primary pb-3" value="Submit" >
+
+    </form>
+    <a href="/signup" class="btn btn-outline-success">Signup</a>
+    
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+    Signup Page
+{% endblock %}
+
+{% block subtitle %}
+  Enter details to signup
+{% endblock %}
+
+{% block content %}
+{% if error %} 
+<div class="fs-4 py-3 px-2 mb-3 bg-danger text-white text-center rounded">{{ error }}</div>
+{% endif %} 
+
+    <form method="post">
+      <div class="fs-4 py-4 mb-3 bg-secondary text-white text-center rounded">Enter details to singup</div>
+        {% csrf_token %}
+        <div class="row pb-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Username" aria-label="User Name" name="username">
+          </div>
+          <div class="col">
+            <input type="email" class="form-control" placeholder="Email" aria-label="Email" name="email">
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col">
+            <input type="password" class="form-control" placeholder="Password" aria-label="Password" name="pswd">
+          </div>
+          <div class="col">
+            <input type="password" class="form-control" placeholder="Current Password" aria-label="Current Password" name="cpswd" autocomplete="off">
+          </div>
+        </div>
+        <div class="row pb-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Address" aria-label="Address" name="address">
+          </div>
+        </div>
+
+        <input type="submit" class="form-control btn btn-primary pb-3" value="Submit" >
+
+    </form>
+{% endblock %}

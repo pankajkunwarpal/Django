@@ -1,0 +1,9 @@
+Django
+gunicorn
+django-heroku
+whitenoise
+dj-database-url
+djangorestframework
+djangorestframework-simplejwt
+pytz
+pyjwt
